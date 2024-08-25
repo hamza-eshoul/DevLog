@@ -1,3 +1,6 @@
+import { useNavigate } from "react-router-dom";
+import { BlogPost } from "@/types";
+
 // utils
 import { formatDate } from "@/utils/formatDates";
 
@@ -12,21 +15,26 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "@/components/Image";
 
 interface RecentPostCardProps {
-  post: {
-    id: number;
-    title: string;
-    description: string;
-    date: string;
-    content: string;
-  };
+  post: BlogPost;
 }
 
 const RecentPostCard = ({ post }: RecentPostCardProps) => {
+  // library hooks
+  const navigate = useNavigate();
+
+  // functions
+  const navigateToBlogPost = () => {
+    navigate("/post");
+  };
+
   return (
-    <article className="flex flex-col gap-4">
+    <article
+      className="flex cursor-pointer flex-col gap-4"
+      onClick={navigateToBlogPost}
+    >
       <div className="h-80 w-full">
         <Image
-          src={testImage}
+          src={post.image}
           alt="blog article image"
           className="rounded-2xl"
         />
@@ -34,7 +42,10 @@ const RecentPostCard = ({ post }: RecentPostCardProps) => {
 
       <div className="flex justify-between">
         <h3 className="text-xl font-medium">{post.title}</h3>
-        <ArrowUpRight className="transform cursor-pointer duration-300 ease-in-out hover:scale-125" />
+        <ArrowUpRight
+          className="transform cursor-pointer duration-300 ease-in-out hover:scale-125"
+          onClick={navigateToBlogPost}
+        />
       </div>
 
       <p>{post.description} ...</p>
@@ -45,7 +56,8 @@ const RecentPostCard = ({ post }: RecentPostCardProps) => {
         </div>
 
         <span className="font-medium">
-          Hamza Eshoul &bull; {formatDate(post.date)}{" "}
+          Hamza Eshoul &bull;
+          {/* {formatDate(post.created_at)}{" "} */}
         </span>
       </div>
     </article>
