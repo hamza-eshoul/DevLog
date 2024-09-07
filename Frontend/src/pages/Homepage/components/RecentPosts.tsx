@@ -26,7 +26,7 @@ const RecentPosts = () => {
       <h2 className="text-2xl font-bold">Recent blog posts</h2>
 
       {blogPosts.data.data.length > 0 ? (
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
           {blogPosts.data.data.map((post: BlogPost) => (
             <RecentPostCard key={post.id} post={post} />
           ))}
@@ -35,11 +35,11 @@ const RecentPosts = () => {
         <p>No blog posts available.</p>
       )}
 
-      <div className="mt-10 flex items-center justify-center">
+      {/* <div className="mt-10 flex items-center justify-center">
         <button className="transform rounded-xl bg-black px-4 py-2 font-medium text-white duration-300 ease-in-out hover:opacity-70">
           Load more
         </button>
-      </div>
+      </div> */}
     </section>
   );
 };

@@ -76,6 +76,18 @@ class Database {
     }
   }
 
+  async deleteBlogPost(id: number): Promise<BlogPost | null> {
+    try {
+      const result: QueryResult = await this.pool.query(
+        "DELETE FROM blogPosts WHERE id = $1 RETURNING *",
+        [id]
+      );
+      return result.rows[0] as BlogPost | null;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async close(): Promise<void> {
     await this.pool.end();
   }

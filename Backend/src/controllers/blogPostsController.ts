@@ -143,6 +143,36 @@ class BlogPostsController {
       }
     }
   }
+
+  async deleteBlogPost(req: Request, res: Response): Promise<void> {
+    const { id } = req.params;
+
+    try {
+      const deletedPost = await db.deleteBlogPost(parseInt(id));
+
+      if (!deletedPost) {
+        res.status(404).json({
+          success: false,
+          message: "Blog Post not found",
+        });
+        return;
+      }
+
+      res.status(200).json({
+        success: true,
+        message: "Blog post deleted successfully",
+      });
+    } catch (error) {
+      console.error("Error fetching blog post by ID:", error);
+
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        error:
+          error instanceof Error ? error.message : "An unknown error occurred",
+      });
+    }
+  }
 }
 
 export default new BlogPostsController();

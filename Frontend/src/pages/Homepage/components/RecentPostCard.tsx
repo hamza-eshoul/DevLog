@@ -4,10 +4,6 @@ import { BlogPost } from "@/types";
 // utils
 import { formatDate } from "@/utils/formatDates";
 
-// images
-import testImage from "@assets/hero_image.jpg";
-import authorImage from "@assets/author_image.jpeg";
-
 // icons
 import { ArrowUpRight } from "lucide-react";
 
@@ -24,7 +20,7 @@ const RecentPostCard = ({ post }: RecentPostCardProps) => {
 
   // functions
   const navigateToBlogPost = () => {
-    navigate("/post");
+    navigate(`/post/${post.id}`);
   };
 
   return (
@@ -32,7 +28,7 @@ const RecentPostCard = ({ post }: RecentPostCardProps) => {
       className="flex cursor-pointer flex-col gap-4"
       onClick={navigateToBlogPost}
     >
-      <div className="h-80 w-full">
+      <div className="h-52 w-full xsm:h-64 lg:h-72 xl:h-80">
         <Image
           src={post.image}
           alt="blog article image"
@@ -41,23 +37,30 @@ const RecentPostCard = ({ post }: RecentPostCardProps) => {
       </div>
 
       <div className="flex justify-between">
-        <h3 className="text-xl font-medium">{post.title}</h3>
+        <h3 className="text-lg font-medium xsm:text-xl">{post.title}</h3>
         <ArrowUpRight
           className="transform cursor-pointer duration-300 ease-in-out hover:scale-125"
           onClick={navigateToBlogPost}
         />
       </div>
 
-      <p>{post.description} ...</p>
+      <p className="text-justify text-base sm:text-lg">
+        {post.description} ...
+      </p>
 
       <div className="flex items-center gap-4">
         <div className="size-10">
-          <Image src={authorImage} alt="post author" className="rounded-full" />
+          <Image
+            src={
+              "https://res.cloudinary.com/dfrd9rf2c/image/upload/v1706042619/messenger_app_profile_images/egwbcg7fcgqbqv6anelj.jpg"
+            }
+            alt="post author"
+            className="rounded-full"
+          />
         </div>
 
-        <span className="font-medium">
-          Hamza Eshoul &bull;
-          {/* {formatDate(post.created_at)}{" "} */}
+        <span className="text-sm font-medium sm:text-base">
+          Hamza Eshoul &bull; {formatDate(post.created_at)}
         </span>
       </div>
     </article>

@@ -1,8 +1,18 @@
 import { ClimbingBoxLoader } from "react-spinners";
+import { twMerge } from "tailwind-merge";
 
-const Loading = () => {
+interface LoadingProps {
+  className?: string;
+}
+
+const Loading = ({ className }: LoadingProps) => {
   return (
-    <div className="flex h-[50vh] items-center justify-center">
+    <div
+      className={twMerge(
+        "flex h-[50vh] items-center justify-center",
+        className,
+      )}
+    >
       <ClimbingBoxLoader size={30} />
     </div>
   );

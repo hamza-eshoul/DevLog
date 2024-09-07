@@ -11,4 +11,7 @@ router.get("/:id", BlogPostsController.getBlogPostById);
 // Add a new post
 router.post("/", BlogPostsController.addBlogPost);
 
+// Delete a post by ID
+router.delete("/:id", BlogPostsController.deleteBlogPost);
+
 export default router;

@@ -6,7 +6,21 @@ export interface BlogPost {
   author: string;
   author_profession: string;
   image: string;
-  content: string;
+  content: {
+    data: {
+      title: string;
+      content: ContentItem[];
+    }[];
+  };
   created_at: Date;
   updated_at: Date;
+}
+
+export interface ContentItem {
+  type: "paragraph" | "image" | "citation" | "list";
+  text?: string;
+  src?: string;
+  alt?: string;
+  author?: string;
+  items?: string[];
 }

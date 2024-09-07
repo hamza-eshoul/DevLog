@@ -21,7 +21,7 @@ axios.defaults.baseURL = base_url;
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </QueryClientProvider>
   );
 };
