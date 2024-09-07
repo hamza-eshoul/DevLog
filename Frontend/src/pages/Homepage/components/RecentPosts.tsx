@@ -34,12 +34,6 @@ const RecentPosts = () => {
       ) : (
         <p>No blog posts available.</p>
       )}
-
-      {/* <div className="mt-10 flex items-center justify-center">
-        <button className="transform rounded-xl bg-black px-4 py-2 font-medium text-white duration-300 ease-in-out hover:opacity-70">
-          Load more
-        </button>
-      </div> */}
     </section>
   );
 };
