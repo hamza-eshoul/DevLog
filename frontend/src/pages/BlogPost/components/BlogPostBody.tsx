@@ -20,7 +20,7 @@ const BlogPostContent = ({ data }: BlogPostContentProps) => {
           <img
             src={data.src}
             alt={data.alt}
-            className="min-h-[10rem] w-full transform rounded-lg transition duration-300 ease-in-out hover:scale-[1.02] sm:h-full sm:max-h-[30rem] sm:min-h-0 sm:object-cover"
+            className="min-h-[10rem] w-full transform rounded-lg transition duration-300 ease-in-out hover:scale-[1.02] sm:h-full sm:max-h-[33rem] sm:min-h-0 sm:object-cover"
           />
         </div>
       );
