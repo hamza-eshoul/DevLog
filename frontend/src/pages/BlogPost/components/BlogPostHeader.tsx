@@ -38,7 +38,7 @@ const BlogPostHeader = ({ data }: BlogPostHeaderProps) => {
       </div>
 
       <div className="md:w-[52%]">
-        <Image alt="blog post image" src={data.image} />
+        <Image alt="blog post image" src={data.image} className="object-none" />
       </div>
     </section>
   );
